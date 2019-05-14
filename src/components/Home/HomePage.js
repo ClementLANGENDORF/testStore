@@ -1,11 +1,8 @@
 import React from "react";
 import {FlatList, Image, ScrollView, StyleSheet, Text, TouchableHighlight, View} from "react-native";
-import Constants from "../../constants/Constants";
-import axios from "axios";
-import * as types from "../../constants/ActionTypes";
 import * as CategoriesAction from "../../actions/CategoriesAction";
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import LoadingAnimation from "../../img/cart-loading.gif";
 
 class HomePage extends React.Component {
@@ -19,19 +16,22 @@ class HomePage extends React.Component {
     _keyExtractor = (item, index) => item.id;
 
     render() {
-        const { navigate } = this.props.navigation;
-        const { categories } = this.props;
+        const {navigate} = this.props.navigation;
+        const {categories} = this.props;
         console.log(this.props);
 
         const Items = <FlatList contentContainerStyle={styles.list} numColumns={1}
                                 data={categories || []}
                                 keyExtractor={this._keyExtractor}
-                                renderItem={({ item }) =>
-                                    <TouchableHighlight style={{width:'50%'}} onPress={() => navigate("Products", { product: item })} underlayColor="white">
-                                        <View style={styles.view} >
+                                renderItem={({item}) =>
+                                    <TouchableHighlight style={{width: '50%'}}
+                                                        onPress={() => navigate("Products", {product: item})}
+                                                        underlayColor="white">
+                                        <View style={styles.view}>
                                             <Image
                                                 resizeMode={'contain'}
-                                                source={ item.image !== null ? {uri: item.image.src} : require('../../../assets/img_0.png')} style={styles.image}
+                                                source={item.image !== null ? {uri: item.image.src} : require('../../../assets/img_0.png')}
+                                                style={styles.image}
                                             />
                                             <Text style={styles.text}>{item.name}</Text>
                                         </View>
@@ -46,7 +46,7 @@ class HomePage extends React.Component {
                     style={{marginBottom: 10, marginTop: 25}}
                 >
                     {this.props.categories.length ? Items :
-                        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                        <View style={{alignItems: 'center', justifyContent: 'center'}}>
                             <Image style={styles.loader} source={LoadingAnimation}/>
                         </View>
                     }
@@ -57,6 +57,11 @@ class HomePage extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    list: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+    },
     title: {
         fontSize: 22,
         padding: 10
@@ -65,9 +70,7 @@ const styles = StyleSheet.create({
         height: 350,
         width: 350
     },
-    list: {
-        flexDirection: 'column'
-    },
+
     view: {
         padding: 10
     },
@@ -87,6 +90,7 @@ const styles = StyleSheet.create({
         padding: 5
     }
 });
+
 function mapStateToProps(state) {
     return {
         categories: state.categories
@@ -98,4 +102,5 @@ function mapDispatchToProps(dispatch) {
         CategoriesAction: bindActionCreators(CategoriesAction, dispatch)
     };
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
