@@ -1,0 +1,30 @@
+{
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "eject": "expo eject"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "expo": "^32.0.0",
+    "https": "^1.0.0",
+    "lottie-react-native": "^2.5.11",
+    "react": "16.5.0",
+    "react-hexagon-grid": "^1.0.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-native-flexbox-grid": "^0.3.2",
+    "react-native-htmlview": "^0.12.1",
+    "react-native-splash-screen": "^3.2.0",
+    "react-navigation": "^1.2.0",
+    "react-redux": "^5.0.7",
+    "react-test-renderer": "^16.8.2",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^5.0.0"
+  },
+  "private": true
+}
