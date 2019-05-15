@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, TextInput, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, ScrollView, Image, TextInput, TouchableOpacity, Alert } from "react-native";
 import HTMLView from 'react-native-htmlview';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -30,6 +30,7 @@ class Product extends React.Component {
 
     addToCart(product) {
         this.props.CartAction.addToCart(product, this.state.quantity);
+
     }
 
     render() {

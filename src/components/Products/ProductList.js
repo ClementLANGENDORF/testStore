@@ -5,27 +5,28 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Constants from '../../constants/Constants';
-import LoadingAnimation from '../../img/cart-loading.gif'; 
+import LoadingAnimation from '../../img/cart-loading.gif';
 import * as ProductAction from '../../actions/ProductAction';
 
 class ProductsList extends Component {
-  
 
-  componentDidMount() {
-    this.props.ProductAction.getProducts();
+    state = {
+        products: [],
+    };
 
+    componentDidMount() {
+     this.props.ProductAction.getProducts();
   }
 
   _keyExtractor = (item, index) => item.id;
 
   render() {
-
     const { navigate } = this.props.navigation;
     const { products } = this.props;
-      console.log(this.props);
-      //console.log(products.categories.name);
+      console.log('props', this.props);
+      console.log('categorie', this.props.navigation.state.params.product.name);
     const Items = <FlatList contentContainerStyle={styles.list} numColumns={2}
-      data={products || []}
+      data={products.filter(item => item.categories[0].name === this.props.navigation.state.params.product.name)}
       keyExtractor={this._keyExtractor}
       renderItem={({ item }) =>
       <TouchableHighlight style={{width:'50%'}} onPress={() => navigate("Product", { product: item })} underlayColor="white">
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    width: 150, 
+    width: 150,
     height: 150
   },
   text: {

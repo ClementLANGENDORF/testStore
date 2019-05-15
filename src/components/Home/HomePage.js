@@ -1,5 +1,5 @@
 import React from "react";
-import {FlatList, Image, ScrollView, StyleSheet, Text, TouchableHighlight, View} from "react-native";
+import {FlatList, Image, ScrollView, StyleSheet, Text, TouchableHighlight, View, Dimensions} from "react-native";
 import * as CategoriesAction from "../../actions/CategoriesAction";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -13,23 +13,23 @@ class HomePage extends React.Component {
 
     }
 
+
     _keyExtractor = (item, index) => item.id;
 
     render() {
         const {navigate} = this.props.navigation;
         const {categories} = this.props;
-        console.log(this.props);
 
         const Items = <FlatList contentContainerStyle={styles.list} numColumns={1}
                                 data={categories || []}
                                 keyExtractor={this._keyExtractor}
                                 renderItem={({item}) =>
-                                    <TouchableHighlight style={{width: '50%'}}
+                                    <TouchableHighlight style={styles.imageContainer}
                                                         onPress={() => navigate("Products", {product: item})}
                                                         underlayColor="white">
-                                        <View style={styles.view}>
+                                        <View >
                                             <Image
-                                                resizeMode={'contain'}
+                                                resizeMode={'cover'}
                                                 source={item.image !== null ? {uri: item.image.src} : require('../../../assets/img_0.png')}
                                                 style={styles.image}
                                             />
@@ -57,6 +57,10 @@ class HomePage extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    imageContainer: {
+        width: Dimensions.get('window').width,
+        height: 250
+    },
     list: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -72,7 +76,7 @@ const styles = StyleSheet.create({
     },
 
     view: {
-        padding: 10
+        padding: 1
     },
     loader: {
         width: 200,
@@ -81,11 +85,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     image: {
-        width: 150,
-        height: 150
+        opacity: 0.8,
+        width: Dimensions.get('window').width,
+        height: 250,
     },
     text: {
+        position: 'absolute',
+        top: 50,
+        right: 25,
         textAlign: 'center',
+        color: '#fff',
+        fontWeight: 'bold',
         fontSize: 20,
         padding: 5
     }

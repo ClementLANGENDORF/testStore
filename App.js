@@ -11,6 +11,7 @@ import CartPage from './src/components/Cart/CartPage';
 import DrawerContainer from './src/components/Drawer/DrawerContainer';
 import configureStore from './src/store/configureStore';
 import LottieView from "lottie-react-native";
+import TabNavigator from "react-navigation/src/navigators/TabNavigator";
 
 const DrawerNavigation = DrawerNavigator({
     Home: {
@@ -58,10 +59,8 @@ const DrawerNavigation = DrawerNavigator({
     inactiveBackgroundColor: 'yellow',
 });
 
-
 const StackNavigation = StackNavigator({
-
-    DrawerNavigation: {screen: DrawerNavigation}
+    DrawerNavigation: {screen: DrawerNavigation},
 }, {
 
     headerMode: 'float',
@@ -74,6 +73,8 @@ const StackNavigation = StackNavigator({
         headerRight: cartButton(navigation, screenProps)
     })
 });
+
+
 
 const drawerButton = (navigation) => (
     <Text
