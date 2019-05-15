@@ -23,22 +23,23 @@ class ProductsList extends Component {
   render() {
     const { navigate } = this.props.navigation;
     const { products } = this.props;
-      console.log('props', this.props);
-      console.log('categorie', this.props.navigation.state.params.product.name);
-    const Items = <FlatList contentContainerStyle={styles.list} numColumns={2}
+    const Items = <FlatList contentContainerStyle={styles.list} numColumns={1}
       data={products.filter(item => item.categories[0].name === this.props.navigation.state.params.product.name)}
       keyExtractor={this._keyExtractor}
       renderItem={({ item }) =>
-      <TouchableHighlight style={{width:'50%'}} onPress={() => navigate("Product", { product: item })} underlayColor="white">
+      <TouchableHighlight style={{width:'75%'}} onPress={() => navigate("Product", { product: item })} underlayColor="white">
         <View style={styles.view} >
+          {console.log(item)}
           <Image style={styles.image} source={{uri: item.images[0].src}} />
           <Text style={styles.text}>{item.name}</Text>
+          <Text style={styles.textPrice}>{item.regular_price}</Text>
+          <Text style={styles.textPrice}>{item.price}</Text>
         </View>
       </TouchableHighlight>
       }
     />;
     return (
-      <ScrollView>
+      <ScrollView style={{flex:1}}>
         {this.props.products.length ? Items :
           <View style={{ alignItems: 'center', justifyContent: 'center' }}>
             <Image style={styles.loader} source={LoadingAnimation}/>
@@ -51,9 +52,13 @@ class ProductsList extends Component {
 
 const styles = StyleSheet.create({
   list: {
-    flexDirection: 'column'
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   view: {
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: 10
   },
   loader: {
@@ -68,9 +73,14 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 15,
     padding: 5
-  }
+  },
+  textPrice: {
+    textAlign: 'center',
+    fontSize: 10,
+    padding: 5
+  },
 });
 
 function mapStateToProps(state) {
