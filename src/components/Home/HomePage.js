@@ -1,5 +1,15 @@
 import React from "react";
-import {Dimensions, FlatList, Image, ScrollView, StyleSheet, Text, TouchableHighlight, View} from "react-native";
+import {
+	Dimensions,
+	FlatList,
+	Image,
+	ImageBackground,
+	ScrollView,
+	StyleSheet,
+	Text,
+	TouchableHighlight,
+	View
+} from "react-native";
 import * as CategoriesAction from "../../actions/CategoriesAction";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -37,6 +47,7 @@ class HomePage extends React.Component {
 															</TouchableHighlight>
 														}/>;
 		return (
+			<ImageBackground  source={require('../../../assets/bkg.png')} style={{width: '100%', height: '100%', backgroundColor: '#fff'}}>
 			<View style={{backgroundColor: '#5A5A5A'}}>
 				<Text style={{marginTop: 10, fontSize: 18, textAlign: 'center', color: '#FE6F61', padding: 10}}>Private sales</Text>
 				<ScrollView
@@ -50,6 +61,7 @@ class HomePage extends React.Component {
 					}
 				</ScrollView>
 			</View>
+			</ImageBackground>
 		);
 	}
 }

@@ -1,5 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, TextInput, TouchableOpacity, Dimensions } from "react-native";
+import {
+    StyleSheet,
+    Text,
+    View,
+    ScrollView,
+    Image,
+    TextInput,
+    TouchableOpacity,
+    Dimensions,
+    ImageBackground
+} from "react-native";
 import HTMLView from 'react-native-htmlview';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -37,6 +47,7 @@ class Product extends React.Component {
 		const product = this.props.navigation.state.params.product;
 		console.log(product);
 		return (
+            <ImageBackground  source={require('../../../assets/bkg.png')} style={{width: '100%', height: '100%', backgroundColor: '#fff'}}>
 			<ScrollView>
 				<View style={{alignItems: 'center'}}>
 					<Image style={styles.image} source={{uri: product.images[0].src}}/>
@@ -63,6 +74,7 @@ class Product extends React.Component {
 					<HTMLView style={styles.html} value={product.description}/>
 				</View>
 			</ScrollView>
+            </ImageBackground>
 		);
 	}
 }

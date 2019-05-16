@@ -1,5 +1,5 @@
 import React from 'react'
-import {FlatList, Image, StyleSheet, Text, TouchableOpacity, View, Alert} from 'react-native'
+import {FlatList, Image, StyleSheet, Text, TouchableOpacity, View, Alert, ImageBackground} from 'react-native'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Entypo} from '@expo/vector-icons';
@@ -61,18 +61,22 @@ class CartPage extends React.Component {
 															}
 			/>;
 			return (
+				<ImageBackground  source={require('../../../assets/bkg.png')} style={{width: '100%', height: '100%', backgroundColor: '#fff'}}>
 				<View style={styles.container}>
 					{Items}
 					<TouchableOpacity style={styles.button} onPress={() => 	this._showAlert()} >
 						<Text style={{ color: '#fff' }}> BUY NOW </Text>
 					</TouchableOpacity>
 				</View>
+				</ImageBackground>
 			)
 		} else {
 			return (
+				<ImageBackground  source={require('../../../assets/bkg.png')} style={{width: '100%', height: '100%', backgroundColor: '#fff'}}>
 				<View style={styles.container}>
 					<Text>Cart is empty!</Text>
 				</View>
+				</ImageBackground>
 			)
 		}
 	}

@@ -14,11 +14,6 @@ export default class DrawerContainer extends React.Component {
 					Home
 				</Text>
 				<Text
-					onPress={() => navigation.navigate('Products')}
-					style={styles.transparentButton}>
-					Shop
-				</Text>
-				<Text
 					onPress={() => navigation.navigate('CartPage')}
 					style={styles.transparentButton}>
 					Cart

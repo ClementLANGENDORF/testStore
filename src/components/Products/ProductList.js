@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {FlatList, Image, ScrollView, StyleSheet, Text, TouchableHighlight, View} from "react-native";
+import {FlatList, Image, ImageBackground, ScrollView, StyleSheet, Text, TouchableHighlight, View} from "react-native";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import LoadingAnimation from '../../img/cart-loading.gif';
@@ -38,6 +38,7 @@ class ProductsList extends Component {
 														}
 		/>;
 		return (
+			<ImageBackground  source={require('../../../assets/bkg.png')} style={{width: '100%', height: '100%', backgroundColor: '#fff'}}>
 			<ScrollView style={{flex: 1}}>
 				{this.props.products.length ? Items :
 					<View style={{alignItems: 'center', justifyContent: 'center'}}>
@@ -45,6 +46,7 @@ class ProductsList extends Component {
 					</View>
 				}
 			</ScrollView>
+			</ImageBackground>
 		);
 	}
 }
