@@ -12,6 +12,12 @@ class CartPage extends React.Component {
 		this.props.CartAction.getCart();
 	}
 
+// 	getTotalPrices(cart) {
+// 	    for (let total in cart){
+// 	        total.totalPrice
+//         }
+// }
+
 	_keyExtractor = (item, index) => item.id;
 
 	removeItem(item) {
@@ -20,17 +26,21 @@ class CartPage extends React.Component {
 
 	render() {
 		const {cart} = this.props;
-		console.log('render cart', cart)
+		console.log('props', this.props);
+		console.log('render cart', cart);
 
 		if (cart && cart.length > 0) {
+		    // this.getTotalPrices(cart);
 			const Items = <FlatList contentContainerStyle={styles.list}
 															data={cart}
 															keyExtractor={this._keyExtractor}
 															renderItem={({item}) =>
 																<View style={styles.lineItem}>
+                                                                    {console.log(item)}
 																	<Image style={styles.image} source={{uri: item.image}}/>
 																	<Text style={styles.text}>{item.name}</Text>
 																	<Text style={styles.text}>{item.quantity}</Text>
+                                                                    <Text style={styles.text}>{item.totalPrice} $</Text>
 																	<TouchableOpacity style={{marginLeft: 'auto'}}
 																										onPress={() => this.removeItem(item)}><Entypo name="cross"
 																																																	size={30}/></TouchableOpacity>
@@ -40,6 +50,8 @@ class CartPage extends React.Component {
 			return (
 				<View style={styles.container}>
 					{Items}
+                    {console.log('total', cart[0].totalPrice)}
+                    {}
 				</View>
 			)
 		} else {
@@ -70,10 +82,10 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	text: {
-		fontSize: 20,
+		fontSize: 15,
 		padding: 5
 	}
-})
+});
 
 function mapStateToProps(state) {
 	return {

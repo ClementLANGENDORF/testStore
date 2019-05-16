@@ -35,6 +35,7 @@ class Product extends React.Component {
 
     render() {
         const product = this.props.navigation.state.params.product;
+        console.log(product);
         return (
             <ScrollView>
                 <Image style={styles.image} source={{ uri: product.images[0].src }} />
