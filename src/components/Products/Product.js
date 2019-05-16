@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native";
+import { StyleSheet, Text, View, ScrollView, Image, TextInput, TouchableOpacity, Dimensions } from "react-native";
 import HTMLView from 'react-native-htmlview';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -22,16 +22,16 @@ class Product extends React.Component {
 		}
 	};
 
-	increaseQuantitiy = () => {
-		this.setState({
-			quantity: this.state.quantity - 1 + 2
-		});
-	};
+    increaseQuantitiy = () => {
+        this.setState({
+            quantity: this.state.quantity - 1 + 2
+        });
+    };
 
-	addToCart(product) {
-		this.props.CartAction.addToCart(product, this.state.quantity);
+    addToCart(product) {
+        this.props.CartAction.addToCart(product, this.state.quantity);
 
-	}
+    }
 
 	render() {
 		const product = this.props.navigation.state.params.product;
@@ -68,61 +68,61 @@ class Product extends React.Component {
 }
 
 const styles = StyleSheet.create({
-	image: {
-		width: 360,
-		height: 360,
-	},
-	text: {
-		fontSize: 20,
-		paddingLeft: 20,
-		paddingBottom: 20,
-		textAlign: 'center',
-		marginTop: 10
-	},
-	input: {
-		height: 40,
-		width: 50,
-		borderWidth: 1,
-		borderColor: 'rgba(27,31,35,0.05)',
-		padding: 10,
-		backgroundColor: 'rgba(27,31,35,0.05)',
-	},
-	button: {
-		alignItems: 'center',
-		backgroundColor: '#FE6F61',
-		padding: 10,
-		width: 150,
-		height: 40,
-		marginLeft: 20,
-		borderBottomLeftRadius: 17,
-		borderBottomRightRadius: 17,
-		borderTopLeftRadius: 17,
-		borderTopRightRadius: 17,
-	},
-	decreaseButton: {
-		height: 40,
-		width: 30,
-		padding: 10,
-		backgroundColor: 'rgba(27,31,35,0.05)',
-		borderBottomLeftRadius: 17,
-		borderTopLeftRadius: 17,
-	},
-	inceaseButton: {
-		height: 40,
-		width: 30,
-		padding: 8,
-		backgroundColor: 'rgba(27,31,35,0.05)',
-		borderBottomRightRadius: 17,
-		borderTopRightRadius: 17,
-	},
-	description: {
-		fontSize: 14,
-		padding: 15,
-	},
-	html: {
-		paddingLeft: 20,
-		paddingRight: 20
-	}
+    image: {
+        width: Dimensions.get('screen').width,
+        height: 360,
+    },
+    text: {
+        fontSize: 20,
+        paddingLeft: 20,
+        paddingBottom: 20,
+        textAlign: 'center',
+				marginTop: 10
+    },
+    input: {
+        height: 40,
+        width: 50,
+        borderWidth: 1,
+        borderColor: 'rgba(27,31,35,0.05)',
+        padding: 10,
+        backgroundColor: 'rgba(27,31,35,0.05)',
+    },
+    button: {
+        alignItems: 'center',
+        backgroundColor: '#FE6F61',
+        padding: 10,
+        width: 150,
+        height: 40,
+        marginLeft: 20,
+        borderBottomLeftRadius: 17,
+        borderBottomRightRadius: 17,
+        borderTopLeftRadius: 17,
+        borderTopRightRadius: 17,
+    },
+    decreaseButton: {
+        height: 40,
+        width: 30,
+        padding: 10,
+        backgroundColor: 'rgba(27,31,35,0.05)',
+        borderBottomLeftRadius: 17,
+        borderTopLeftRadius: 17,
+    },
+    inceaseButton: {
+        height: 40,
+        width: 30,
+        padding: 8,
+        backgroundColor: 'rgba(27,31,35,0.05)',
+        borderBottomRightRadius: 17,
+        borderTopRightRadius: 17,
+    },
+    description: {
+        fontSize: 14,
+        padding: 15,
+    },
+    html: {
+        paddingLeft: 20,
+        paddingRight: 20
+    }
 });
 
 function mapDispatchToProps(dispatch) {
