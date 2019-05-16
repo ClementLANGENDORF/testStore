@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, TextInput, TouchableOpacity, Alert } from "react-native";
+import { StyleSheet, Text, View, ScrollView, Image, TextInput, TouchableOpacity, Dimensions } from "react-native";
 import HTMLView from 'react-native-htmlview';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -67,8 +67,8 @@ class Product extends React.Component {
 
 const styles = StyleSheet.create({
     image: {
-        width: 360,
-        height: 360
+        width: Dimensions.get('screen').width,
+        height: 360,
     },
     text: {
         fontSize: 20,
