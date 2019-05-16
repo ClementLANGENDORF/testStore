@@ -31,7 +31,7 @@ class ProductsList extends Component {
 																	{console.log(item)}
 																	<Image style={styles.image} source={{uri: item.images[0].src}}/>
 																	<Text style={styles.text}>{item.name.toUpperCase()}</Text>
-																	<Text style={styles.textPrice}>{item.regular_price} $</Text>
+																	<Text style={styles.textOldPrice}>{item.regular_price} $</Text>
 																	<Text style={styles.textPrice}>{item.price} $</Text>
 																</View>
 															</TouchableHighlight>
@@ -79,6 +79,12 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		fontSize: 10,
 		padding: 5
+	},
+	textOldPrice: {
+		textAlign: 'center',
+		fontSize: 10,
+		padding: 5,
+		textDecorationLine: 'line-through'
 	},
 });
 
