@@ -1,4 +1,5 @@
 import *  as types from '../constants/ActionTypes';
+import {Text} from "react-native";
 
 export function getCart() {
     return (dispatch) => {
@@ -14,8 +15,10 @@ export function addToCart(product, quantity) {
             "id": product.id,
             "image": product.images[0].src,
             "name": product.name,
-            "quantity": quantity
-        }
+            "price": product.price,
+            "quantity": quantity,
+            "totalPrice": quantity * product.price,
+        };
         dispatch({
             type: types.ADD_TO_CART_SUCCESS,
             item: cartItem
