@@ -1,5 +1,5 @@
 import React from "react";
-import {FlatList, Image, ScrollView, StyleSheet, Text, TouchableHighlight, View, Dimensions} from "react-native";
+import {Dimensions, FlatList, Image, ScrollView, StyleSheet, Text, TouchableHighlight, View} from "react-native";
 import * as CategoriesAction from "../../actions/CategoriesAction";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -12,7 +12,6 @@ class HomePage extends React.Component {
 		this.props.CategoriesAction.getCategories();
 
 	}
-
 
 	_keyExtractor = (item, index) => item.id;
 
@@ -36,10 +35,10 @@ class HomePage extends React.Component {
 																	<Text style={styles.text}>{item.name}</Text>
 																</View>
 															</TouchableHighlight>
-														}
-		/>;
+														}/>;
 		return (
-			<View>
+			<View style={{backgroundColor: '#5A5A5A'}}>
+				<Text style={{marginTop: 10, fontSize: 18, textAlign: 'center', color: '#FE6F61', padding: 10}}>Private sales</Text>
 				<ScrollView
 					scrollEventThrottle={10}
 					pagingEnabled
@@ -58,7 +57,8 @@ class HomePage extends React.Component {
 const styles = StyleSheet.create({
 	imageContainer: {
 		width: Dimensions.get('window').width,
-		height: 250
+		height: 250,
+		marginBottom: 5
 	},
 	list: {
 		justifyContent: 'center',
@@ -90,12 +90,12 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		position: 'absolute',
-		top: 50,
-		right: 25,
+		top: 5,
+		right: 20,
 		textAlign: 'center',
 		color: '#fff',
 		fontWeight: 'bold',
-		fontSize: 20,
+		fontSize: 16,
 		padding: 5
 	}
 });
