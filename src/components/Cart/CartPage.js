@@ -51,7 +51,6 @@ class CartPage extends React.Component {
 				<View style={styles.container}>
 					{Items}
                     {console.log('total', cart[0].totalPrice)}
-                    {}
 				</View>
 			)
 		} else {
